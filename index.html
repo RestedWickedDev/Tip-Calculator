@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tip Calculator</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background-color: #118ab2;
+            color: #06d6a0;
+        }
+        main {
+            padding-left: 3em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        h1 {
+            font-size: 4em;
+        }
+        div {
+            font-size: 3em;
+            color: #ef476f;
+        }
+        input {
+            background-color: #073b4c;   
+            color: #ffd166;
+            font-family: monospace;
+            font-size: 2em;
+            border: none; 
+            margin-bottom: .25em;
+        }
+    </style>
+    <main>
+        <h1>Tip Calc</h1>
+        <div id="displayTip">0.00</div>
+        <div id="displayTotal">0.00</div>
+        <input id="bill" value="10.00" type="number">
+        <input id="tip" value="15" type="number">
+        <input id="people" value="2" type="number">
+      </main>
+
+      <script>
+        const displayTip = document.querySelector('#displayTip')
+        const displayTotal = document.querySelector('#displayTotal')
+        const billInput = document.querySelector('#bill')
+        const tipInput = document.querySelector('#tip')
+        const peopleInput = document.querySelector('#people')
+
+        function calculateTip() {
+            const billValue = billInput.value
+            const tipValue = tipInput.value
+            const peopleValue = peopleInput.value
+
+            const tipAmount = billValue * tipValue / 100 / peopleValue
+            const totalAmount = (1 * billValue + tipAmount)
+
+            displayTip.innerHTML = tipAmount.toFixed(2)
+            displayTotal.innerHTML = totalAmount
+        }
+        billInput.addEventListener('input', calculateTip)
+        tipInput.addEventListener('input', calculateTip)
+        peopleInput.addEventListener('input', calculateTip)
+
+        calculateTip()
+      </script>      
+</body>
+</html>
